@@ -1,9 +1,9 @@
 # More-Trophies
-Adds more trophies to [ObsTrophies mod](https://minecraft.curseforge.com/projects/obstrophies)
+Adds more trophies to [ObsTrophies mod](http://bit.ly/2uGa7P4)
 
 ### Requires:
-* [ObsTrophies](https://minecraft.curseforge.com/projects/obstrophies)
-* [ObsCore](https://minecraft.curseforge.com/projects/obscore)
+* [ObsTrophies](http://bit.ly/2uGa7P4)
+* [ObsCore](http://bit.ly/2t2OKFL)
 
 ### Supported Mods:
 * [EpicProportions Mod](http://bit.ly/2tD9u8R)
