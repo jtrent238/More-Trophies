@@ -5,12 +5,20 @@ import java.util.ArrayList;
 
 import org.apache.logging.log4j.Level;
 
+import com.jim.obstrophiesaoa.trophy.TrophyAoA;
+import com.jim.obstrophiesaoa.trophy.TrophyRegistry;
 import com.jtrent238.moretrophies.common.CommonProxy;
+import com.jtrent238.moretrophies.trophyloaders.AdInfernos;
+import com.jtrent238.moretrophies.trophyloaders.AquaCreeper;
 import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod;
 import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod_Christmas;
 import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod_Halloween;
+import com.jtrent238.moretrophies.trophyloaders.ExtraGolems;
 import com.jtrent238.moretrophies.trophyloaders.FandomCraft;
 import com.jtrent238.moretrophies.trophyloaders.FrozenArctic;
+import com.jtrent238.moretrophies.trophyloaders.HardcoreEnderExpansion;
+import com.jtrent238.moretrophies.trophyloaders.JurassiCraft;
+import com.jtrent238.moretrophies.trophyloaders.LaserCreepers;
 import com.jtrent238.moretrophies.trophyloaders.LostWorld;
 import com.jtrent238.moretrophies.trophyloaders.Minecraft;
 import com.jtrent238.moretrophies.trophyloaders.MoZombies;
@@ -18,7 +26,9 @@ import com.jtrent238.moretrophies.trophyloaders.MrGorrila;
 import com.jtrent238.moretrophies.trophyloaders.MrWhalesAminalsMod;
 import com.jtrent238.moretrophies.trophyloaders.MyPetSushi;
 import com.jtrent238.moretrophies.trophyloaders.OreSpiders;
+import com.jtrent238.moretrophies.trophyloaders.Potatians;
 import com.jtrent238.moretrophies.trophyloaders.ProjectFruit;
+import com.jtrent238.moretrophies.trophyloaders.ReptileMod;
 import com.jtrent238.moretrophies.trophyloaders.SpiderQueen;
 import com.jtrent238.moretrophies.trophyloaders.WeepingAngels;
 import com.jtrent238.moretrophies.trophyloaders.WildMobsMod;
@@ -46,7 +56,7 @@ import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.ChestGenHooks;
 
-@Mod(modid=MoreTrophies.MODID, name=MoreTrophies.MODNAME, version=(MoreTrophies.MODVERSION),dependencies="required-after:obscore, required-after:obstrophiesaoa")
+@Mod(modid=MoreTrophies.MODID, name=MoreTrophies.MODNAME, version=(MoreTrophies.MODVERSION)/*,dependencies="required-after:obscore, required-after:obstrophiesaoa"*/)
 //@MeddleMod(id=Main.MODID, name=Main.MODNAME, version=(Main.MODVERSION), author=Main.MODAUTHOR)
 public class MoreTrophies
 {
@@ -60,7 +70,7 @@ public class MoreTrophies
 
 	@Instance(MODID)
     public static MoreTrophies instance;
-	public static final String MODVERSION = "1.0.0.0";
+	public static final String MODVERSION = "1.0.0.1";
 	public static final String MODNAME = "jtrent238's More Trophies Mod";
 	public static final String MODAUTHOR = "jtrent238";
 	public static final String MC = "1.7.10";
@@ -92,6 +102,7 @@ public void init(FMLInitializationEvent event)
 	//Register Trophies for mods
 	
 		Minecraft.registerTrophies();
+		
 		
 	if (Loader.isModLoaded("epicproportionsmod")) {
 		
@@ -300,6 +311,111 @@ public void init(FMLInitializationEvent event)
             e.printStackTrace(System.err);
         }
 			FrozenArctic.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("lasercreepers")) {
+		
+		System.out.println("Laser Creeper Robot Dino Riders From Space Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Laser Creeper Robot Dino Riders From Space Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Laser Creeper Robot Dino Riders From Space Mod");
+            e.printStackTrace(System.err);
+        }
+			LaserCreepers.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("HardcoreEnderExpansion")) {
+		
+		System.out.println("Hardcore Ender Expansion Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Hardcore Ender Expansion Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Hardcore Ender Expansion Mod");
+            e.printStackTrace(System.err);
+        }
+			HardcoreEnderExpansion.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("aquacreeper")) {
+		
+		System.out.println("Aqua Creeper Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Aqua Creeper Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Aqua Creeper Mod");
+            e.printStackTrace(System.err);
+        }
+			AquaCreeper.registerTrophies();
+		}
+			/*
+	if (Loader.isModLoaded("jurassicraft")) {
+		
+		System.out.println("JurassiCraft Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded JurassiCraft Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load JurassiCraft Mod");
+            e.printStackTrace(System.err);
+        }
+			JurassiCraft.registerTrophies();
+		}
+			*/
+	if (Loader.isModLoaded("dextersnether")) {
+		
+		System.out.println("Ad Infernos Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Ad Infernos Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Ad Infernos Mod");
+            e.printStackTrace(System.err);
+        }
+			AdInfernos.registerTrophies();
+		}
+				/*
+	if (Loader.isModLoaded("potatians")) {
+		
+		System.out.println("Potatians Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Potatians Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Potatians Mod");
+            e.printStackTrace(System.err);
+        }
+			Potatians.registerTrophies();
+		}
+				*/
+	
+	if (Loader.isModLoaded("golems")) {
+		
+		System.out.println("Extra Golems Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Extra Golems Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Extra Golems Mod");
+            e.printStackTrace(System.err);
+        }
+			ExtraGolems.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("reptilemod")) {
+		
+		System.out.println("Reptile Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Reptile Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Reptile Mod");
+            e.printStackTrace(System.err);
+        }
+			ReptileMod.registerTrophies();
 		}
 }
 
