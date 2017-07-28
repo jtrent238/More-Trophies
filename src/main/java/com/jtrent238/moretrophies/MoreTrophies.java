@@ -2,6 +2,10 @@ package com.jtrent238.moretrophies;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import org.apache.logging.log4j.Level;
 
@@ -9,7 +13,10 @@ import com.jim.obstrophiesaoa.trophy.TrophyAoA;
 import com.jim.obstrophiesaoa.trophy.TrophyRegistry;
 import com.jtrent238.moretrophies.common.CommonProxy;
 import com.jtrent238.moretrophies.trophyloaders.AdInfernos;
+import com.jtrent238.moretrophies.trophyloaders.AnimalBikes;
 import com.jtrent238.moretrophies.trophyloaders.AquaCreeper;
+import com.jtrent238.moretrophies.trophyloaders.AshtonsWatermelonMod;
+import com.jtrent238.moretrophies.trophyloaders.BabyMobs;
 import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod;
 import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod_Christmas;
 import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod_Halloween;
@@ -18,18 +25,25 @@ import com.jtrent238.moretrophies.trophyloaders.FandomCraft;
 import com.jtrent238.moretrophies.trophyloaders.FrozenArctic;
 import com.jtrent238.moretrophies.trophyloaders.HardcoreEnderExpansion;
 import com.jtrent238.moretrophies.trophyloaders.JurassiCraft;
+import com.jtrent238.moretrophies.trophyloaders.JustaFewFish;
 import com.jtrent238.moretrophies.trophyloaders.LaserCreepers;
 import com.jtrent238.moretrophies.trophyloaders.LostWorld;
+import com.jtrent238.moretrophies.trophyloaders.LotsofMobs;
 import com.jtrent238.moretrophies.trophyloaders.Minecraft;
 import com.jtrent238.moretrophies.trophyloaders.MoZombies;
+import com.jtrent238.moretrophies.trophyloaders.MoreShearables;
 import com.jtrent238.moretrophies.trophyloaders.MrGorrila;
 import com.jtrent238.moretrophies.trophyloaders.MrWhalesAminalsMod;
 import com.jtrent238.moretrophies.trophyloaders.MyPetSushi;
 import com.jtrent238.moretrophies.trophyloaders.OreSpiders;
+import com.jtrent238.moretrophies.trophyloaders.Orespawn;
+import com.jtrent238.moretrophies.trophyloaders.PlayerTrophies;
 import com.jtrent238.moretrophies.trophyloaders.Potatians;
 import com.jtrent238.moretrophies.trophyloaders.ProjectFruit;
 import com.jtrent238.moretrophies.trophyloaders.ReptileMod;
 import com.jtrent238.moretrophies.trophyloaders.SpiderQueen;
+import com.jtrent238.moretrophies.trophyloaders.TattleTailCraft;
+import com.jtrent238.moretrophies.trophyloaders.TheUltimateUnicornMod;
 import com.jtrent238.moretrophies.trophyloaders.WeepingAngels;
 import com.jtrent238.moretrophies.trophyloaders.WildMobsMod;
 import com.jtrent238.moretrophies.trophyloaders.ZeldaSwordSkills;
@@ -51,12 +65,14 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagString;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.ChestGenHooks;
 
-@Mod(modid=MoreTrophies.MODID, name=MoreTrophies.MODNAME, version=(MoreTrophies.MODVERSION)/*,dependencies="required-after:obscore, required-after:obstrophiesaoa"*/)
+@Mod(modid=MoreTrophies.MODID, name=MoreTrophies.MODNAME, version=(MoreTrophies.MODVERSION), dependencies="required-after:obstrophiesaoa")
 //@MeddleMod(id=Main.MODID, name=Main.MODNAME, version=(Main.MODVERSION), author=Main.MODAUTHOR)
 public class MoreTrophies
 {
@@ -70,7 +86,7 @@ public class MoreTrophies
 
 	@Instance(MODID)
     public static MoreTrophies instance;
-	public static final String MODVERSION = "1.0.0.1";
+	public static final String MODVERSION = "1.0.1.1";
 	public static final String MODNAME = "jtrent238's More Trophies Mod";
 	public static final String MODAUTHOR = "jtrent238";
 	public static final String MC = "1.7.10";
@@ -98,11 +114,12 @@ public void init(FMLInitializationEvent event)
 {
 	proxy.init(event);
 	
-	
+	ItemLoader.loadItems();
+
 	//Register Trophies for mods
 	
 		Minecraft.registerTrophies();
-		
+		PlayerTrophies.registerTrophies();
 		
 	if (Loader.isModLoaded("epicproportionsmod")) {
 		
@@ -417,6 +434,137 @@ public void init(FMLInitializationEvent event)
         }
 			ReptileMod.registerTrophies();
 		}
+	
+	if (Loader.isModLoaded("moreShearables")) {
+		
+		System.out.println("More Shearables Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded More Shearables Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load More Shearables Mod");
+            e.printStackTrace(System.err);
+        }
+			MoreShearables.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("babymobs")) {
+		
+		System.out.println("Baby Mobs Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Baby Mobs Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Baby Mobs Mod");
+            e.printStackTrace(System.err);
+        }
+			BabyMobs.registerTrophies();
+		}
+			/*
+	if (Loader.isModLoaded("jaff")) {
+		
+		System.out.println("Just a Few Fish Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Just a Few Fish Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Just a Few Fish Mod");
+            e.printStackTrace(System.err);
+        }
+			JustaFewFish.registerTrophies();
+		}
+			 */
+			/*
+	if (Loader.isModLoaded("watermelonMod")) {
+		
+		System.out.println("Ashtons Watermelon Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Ashtons Watermelon Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Ashtons Watermelon Mod");
+            e.printStackTrace(System.err);
+        }
+			AshtonsWatermelonMod.registerTrophies();
+		}
+			*/
+	if (Loader.isModLoaded("AshtonsWatermelonMod")) {
+		
+		System.out.println("Ashtons Watermelon Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Ashtons Watermelon Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Ashtons Watermelon Mod");
+            e.printStackTrace(System.err);
+        }
+			AshtonsWatermelonMod.registerTrophies();
+		}
+			/*
+	if (Loader.isModLoaded("ultimate_unicorn_mod")) {
+		
+		System.out.println("Wings, Horns, and Hooves, the Ultimate Unicorn Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Wings, Horns, and Hooves, the Ultimate Unicorn Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Wings, Horns, and Hooves, the Ultimate Unicorn Mod");
+            e.printStackTrace(System.err);
+        }
+			TheUltimateUnicornMod.registerTrophies();
+		}
+			*/
+	if (Loader.isModLoaded("OreSpawn")) {
+		
+		System.out.println("OreSpawn Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded OreSpawn Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load OreSpawn Mod");
+            e.printStackTrace(System.err);
+        }
+			Orespawn.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("ttm")) {
+		
+		System.out.println("TattleTail Craft: Mama's Coming! Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded TattleTail Craft: Mama's Coming! Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load TattleTail Craft: Mama's Coming! Mod");
+            e.printStackTrace(System.err);
+        }
+			TattleTailCraft.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("animalbikes")) {
+		
+		System.out.println("Animal Bikes Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Animal Bikes Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Animal Bikes Mod");
+            e.printStackTrace(System.err);
+        }
+			AnimalBikes.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("lom")) {
+		
+		System.out.println("Lots of Mobs Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Lots of Mobs Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Lots of Mobs Mod");
+            e.printStackTrace(System.err);
+        }
+			LotsofMobs.registerTrophies();
+		}
 }
 
 
@@ -447,6 +595,27 @@ public void serverStart(FMLServerStartingEvent event)
      
      //manager.registerCommand(new CommandModInfo());
      //manager.registerCommand(new CommandChangelog());
+}
+
+
+public static List<String> getAllNames()
+{
+  Set<String> names = new HashSet();
+  //names.addAll(Arrays.asList(others));
+  //names.addAll(Arrays.asList(modders));
+  //names.addAll(Arrays.asList(youtubers));
+  //names.addAll(Arrays.asList(mojang));
+  //names.addAll(Arrays.asList(mindCrack));
+  //names.addAll(Arrays.asList(hermitcraft));
+  //names.addAll(Arrays.asList(forgeCraft));
+  //names.addAll(Arrays.asList(ftb));
+  //names.addAll(Arrays.asList(technic));
+  
+  /*if (enableModSent) {
+    names.addAll(modsent);
+  }*/
+  
+  return new ArrayList(names);
 }
 
 					
