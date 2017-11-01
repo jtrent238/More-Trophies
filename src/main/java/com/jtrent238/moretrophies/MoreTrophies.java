@@ -17,13 +17,16 @@ import com.jtrent238.moretrophies.trophyloaders.AnimalBikes;
 import com.jtrent238.moretrophies.trophyloaders.AquaCreeper;
 import com.jtrent238.moretrophies.trophyloaders.AshtonsWatermelonMod;
 import com.jtrent238.moretrophies.trophyloaders.BabyMobs;
+import com.jtrent238.moretrophies.trophyloaders.CandyCraft;
 import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod;
 import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod_Christmas;
 import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod_Halloween;
+import com.jtrent238.moretrophies.trophyloaders.ExoticPlayers;
 import com.jtrent238.moretrophies.trophyloaders.ExtraGolems;
 import com.jtrent238.moretrophies.trophyloaders.FandomCraft;
 import com.jtrent238.moretrophies.trophyloaders.FrozenArctic;
 import com.jtrent238.moretrophies.trophyloaders.HardcoreEnderExpansion;
+import com.jtrent238.moretrophies.trophyloaders.JTYouTubers;
 import com.jtrent238.moretrophies.trophyloaders.JurassiCraft;
 import com.jtrent238.moretrophies.trophyloaders.JustaFewFish;
 import com.jtrent238.moretrophies.trophyloaders.LaserCreepers;
@@ -44,6 +47,7 @@ import com.jtrent238.moretrophies.trophyloaders.ReptileMod;
 import com.jtrent238.moretrophies.trophyloaders.SpiderQueen;
 import com.jtrent238.moretrophies.trophyloaders.TattleTailCraft;
 import com.jtrent238.moretrophies.trophyloaders.TheUltimateUnicornMod;
+import com.jtrent238.moretrophies.trophyloaders.TheValeOfShadows;
 import com.jtrent238.moretrophies.trophyloaders.WeepingAngels;
 import com.jtrent238.moretrophies.trophyloaders.WildMobsMod;
 import com.jtrent238.moretrophies.trophyloaders.ZeldaSwordSkills;
@@ -86,7 +90,7 @@ public class MoreTrophies
 
 	@Instance(MODID)
     public static MoreTrophies instance;
-	public static final String MODVERSION = "1.0.1.1";
+	public static final String MODVERSION = "1.0.1.2";
 	public static final String MODNAME = "jtrent238's More Trophies Mod";
 	public static final String MODAUTHOR = "jtrent238";
 	public static final String MC = "1.7.10";
@@ -474,20 +478,7 @@ public void init(FMLInitializationEvent event)
 			JustaFewFish.registerTrophies();
 		}
 			 */
-			/*
-	if (Loader.isModLoaded("watermelonMod")) {
-		
-		System.out.println("Ashtons Watermelon Mod Loaded");
-		try {
-            LogHelper.log(Level.INFO, "Loaded Ashtons Watermelon Mod");
-        }
-        catch (Exception e) {
-            LogHelper.log(Level.WARN, "Could not load Ashtons Watermelon Mod");
-            e.printStackTrace(System.err);
-        }
-			AshtonsWatermelonMod.registerTrophies();
-		}
-			*/
+			
 	if (Loader.isModLoaded("AshtonsWatermelonMod")) {
 		
 		System.out.println("Ashtons Watermelon Mod Loaded");
@@ -564,6 +555,58 @@ public void init(FMLInitializationEvent event)
             e.printStackTrace(System.err);
         }
 			LotsofMobs.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("jtrent238youtubers")) {
+		
+		System.out.println("jtrent238's YouTubers Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded jtrent238's YouTubers Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load jtrent238's YouTubers Mod");
+            e.printStackTrace(System.err);
+        }
+			JTYouTubers.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("upsidedown")) {
+		
+		System.out.println("The Vale of Shadows Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded The Vale of Shadows Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load The Vale of Shadows Mod");
+            e.printStackTrace(System.err);
+        }
+			TheValeOfShadows.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("ExoticPlayers")) {
+		
+		System.out.println("Exotic Players Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Exotic Players Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Exotic Players Mod");
+            e.printStackTrace(System.err);
+        }
+			ExoticPlayers.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("candycraftmod")) {
+		
+		System.out.println("CandyCraft Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded CandyCraft Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load CandyCraft Mod");
+            e.printStackTrace(System.err);
+        }
+			CandyCraft.registerTrophies();
 		}
 }
 
