@@ -4,7 +4,10 @@ import java.util.UUID;
 
 import com.jim.obstrophiesaoa.trophy.TrophyAoA;
 import com.jim.obstrophiesaoa.trophy.TrophyRegistry;
+import com.jtrent238.moretrophies.trophy.PlayerTrophyRegistry;
+import com.jtrent238.moretrophies.trophy.TrophyPlayer;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -46,7 +49,8 @@ public class PlayerTrophies {
 
 		System.out.println("Player Trophies Comeing Soon!");
 		
-		//TrophyRegistry.getInstance().addTrophies(new TrophyAoA[] { new TrophyAoA("minecraft", "EntityPlayer")});
+		PlayerTrophyRegistry.getInstance().addTrophies(new TrophyPlayer[] { new TrophyPlayer("minecraft", "EntityPlayer", "jtrent238")});
+		//PlayerTrophyRegistry.getInstance().addTrophies(new TrophyPlayer[] { new TrophyPlayer("minecraft", "EntityPlayer", Minecraft.getMinecraft().thePlayer.getDisplayName())});
 		//TrophyRegistry.getInstance().addTrophies(new TrophyAoA[] { new TrophyAoA("minecraft", EntityPlayer)});
 	}
 

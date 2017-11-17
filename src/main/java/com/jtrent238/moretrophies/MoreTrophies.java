@@ -1,16 +1,24 @@
 package com.jtrent238.moretrophies;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 import org.apache.logging.log4j.Level;
 
+import com.jim.obscore.OCClientConfig;
+import com.jim.obscore.blocks.BlockInitialisation;
+import com.jim.obscore.containers.AbstractLanguageDetails;
+import com.jim.obscore.containers.BlockDetails;
+import com.jim.obscore.lib.ObsLog;
 import com.jim.obstrophiesaoa.trophy.TrophyAoA;
 import com.jim.obstrophiesaoa.trophy.TrophyRegistry;
+import com.jtrent238.moretrophies.blocks.BlockTrophyPlayer;
 import com.jtrent238.moretrophies.common.CommonProxy;
 import com.jtrent238.moretrophies.trophyloaders.AdInfernos;
 import com.jtrent238.moretrophies.trophyloaders.AnimalBikes;
@@ -18,38 +26,50 @@ import com.jtrent238.moretrophies.trophyloaders.AquaCreeper;
 import com.jtrent238.moretrophies.trophyloaders.AshtonsWatermelonMod;
 import com.jtrent238.moretrophies.trophyloaders.BabyMobs;
 import com.jtrent238.moretrophies.trophyloaders.CandyCraft;
+import com.jtrent238.moretrophies.trophyloaders.CryptoCraft;
 import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod;
 import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod_Christmas;
 import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod_Halloween;
 import com.jtrent238.moretrophies.trophyloaders.ExoticPlayers;
 import com.jtrent238.moretrophies.trophyloaders.ExtraGolems;
+import com.jtrent238.moretrophies.trophyloaders.FNaFUniverse;
 import com.jtrent238.moretrophies.trophyloaders.FandomCraft;
+import com.jtrent238.moretrophies.trophyloaders.FantasyMod;
 import com.jtrent238.moretrophies.trophyloaders.FrozenArctic;
 import com.jtrent238.moretrophies.trophyloaders.HardcoreEnderExpansion;
 import com.jtrent238.moretrophies.trophyloaders.JTYouTubers;
 import com.jtrent238.moretrophies.trophyloaders.JurassiCraft;
 import com.jtrent238.moretrophies.trophyloaders.JustaFewFish;
 import com.jtrent238.moretrophies.trophyloaders.LaserCreepers;
+import com.jtrent238.moretrophies.trophyloaders.LittleBigCraft;
 import com.jtrent238.moretrophies.trophyloaders.LostWorld;
 import com.jtrent238.moretrophies.trophyloaders.LotsofMobs;
+import com.jtrent238.moretrophies.trophyloaders.MaleficentWorld;
 import com.jtrent238.moretrophies.trophyloaders.Minecraft;
 import com.jtrent238.moretrophies.trophyloaders.MoZombies;
+import com.jtrent238.moretrophies.trophyloaders.MoreAnimalsMod;
 import com.jtrent238.moretrophies.trophyloaders.MoreShearables;
 import com.jtrent238.moretrophies.trophyloaders.MrGorrila;
 import com.jtrent238.moretrophies.trophyloaders.MrWhalesAminalsMod;
 import com.jtrent238.moretrophies.trophyloaders.MyPetSushi;
 import com.jtrent238.moretrophies.trophyloaders.OreSpiders;
 import com.jtrent238.moretrophies.trophyloaders.Orespawn;
+import com.jtrent238.moretrophies.trophyloaders.ParziStarWars;
 import com.jtrent238.moretrophies.trophyloaders.PlayerTrophies;
 import com.jtrent238.moretrophies.trophyloaders.Potatians;
 import com.jtrent238.moretrophies.trophyloaders.ProjectFruit;
+import com.jtrent238.moretrophies.trophyloaders.RandNMixMod;
+import com.jtrent238.moretrophies.trophyloaders.RandomMobsMod;
 import com.jtrent238.moretrophies.trophyloaders.ReptileMod;
+import com.jtrent238.moretrophies.trophyloaders.SoggyEaster;
 import com.jtrent238.moretrophies.trophyloaders.SpiderQueen;
 import com.jtrent238.moretrophies.trophyloaders.TattleTailCraft;
 import com.jtrent238.moretrophies.trophyloaders.TheUltimateUnicornMod;
 import com.jtrent238.moretrophies.trophyloaders.TheValeOfShadows;
+import com.jtrent238.moretrophies.trophyloaders.VaraziusFNAF;
 import com.jtrent238.moretrophies.trophyloaders.WeepingAngels;
 import com.jtrent238.moretrophies.trophyloaders.WildMobsMod;
+import com.jtrent238.moretrophies.trophyloaders.Yogmod;
 import com.jtrent238.moretrophies.trophyloaders.ZeldaSwordSkills;
 
 import cpw.mods.fml.common.Loader;
@@ -64,6 +84,7 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.command.ICommandManager;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
@@ -90,12 +111,18 @@ public class MoreTrophies
 
 	@Instance(MODID)
     public static MoreTrophies instance;
-	public static final String MODVERSION = "1.0.1.2";
+	public static final String MODVERSION = "1.0.2.2";
 	public static final String MODNAME = "jtrent238's More Trophies Mod";
 	public static final String MODAUTHOR = "jtrent238";
 	public static final String MC = "1.7.10";
 	public static final String OBSTrophiesVersion = "1.6.0";
 	public static final String OBSCoreVersion = "1.4.1";
+
+
+	private BlockTrophyPlayer blockPlayerTrophy;
+
+
+	private List<AbstractLanguageDetails> _languageDetails = new ArrayList();
 
 
 
@@ -108,22 +135,45 @@ public class MoreTrophies
 @Mod.EventHandler
 public void preInit(FMLPreInitializationEvent event)
 {
-	
+	ObsLog.initialise(event.getModLog(), MODNAME);
+	ConfigManager.Manage(event);
 }
 
 
 
 @Mod.EventHandler
-public void init(FMLInitializationEvent event)
+public void init(FMLInitializationEvent event) throws IOException
 {
 	proxy.init(event);
 	
 	ItemLoader.loadItems();
 
+	//String name = "otaoablocktrophyPLAYER";
+    
+    //BlockDetails[] bd = { new BlockDetails("TrophyPLAYER", Boolean.valueOf(false), "builder") };
+    
+    //blockPlayerTrophy = new BlockTrophyPlayer(name, Material.rock);
+    //BlockInitialisation.initBlockMultiDetails(blockPlayerTrophy, bd, 2.0F, 0.8F, this._languageDetails);
+    
+    //blockPlayerTrophy.func_149711_c(0.5F);
+    
 	//Register Trophies for mods
 	
 		Minecraft.registerTrophies();
 		PlayerTrophies.registerTrophies();
+		
+		if(ConfigManager.AUTOTROPHYLOADER == true){
+
+			if(OCClientConfig.getInstance().dumpEntityData == true){
+				AutoTrophyLoader.constructor("obscore_entity_ids.txt");
+				AutoTrophyLoader.registerTrophies();
+			}
+			if(OCClientConfig.getInstance().dumpEntityData == false){
+				LogHelper.log(Level.WARN, "dump_entity_data must be set to true in obscore.cfg for this to work.");
+			}
+
+		}
+		
 		
 	if (Loader.isModLoaded("epicproportionsmod")) {
 		
@@ -607,6 +657,162 @@ public void init(FMLInitializationEvent event)
             e.printStackTrace(System.err);
         }
 			CandyCraft.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("fnafmod")) {
+		
+		System.out.println("Five Nights at Freddy's Universe Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Five Nights at Freddy's Universe Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Five Nights at Freddy's Universe Mod");
+            e.printStackTrace(System.err);
+        }
+			FNaFUniverse.registerTrophies();
+		}
+
+
+	if (Loader.isModLoaded("easter")) {
+		
+		System.out.println("Easter Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Easter Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Easter Mod");
+            e.printStackTrace(System.err);
+        }
+			SoggyEaster.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("starwarsmod")) {
+		
+		System.out.println("Parzi's Star Wars Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Parzi's Star Wars Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Parzi's Star Wars Mod");
+            e.printStackTrace(System.err);
+        }
+			ParziStarWars.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("fnafmod")) {
+		
+		System.out.println("Fnaf Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Fnaf Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Fnaf Mod");
+            e.printStackTrace(System.err);
+        }
+			VaraziusFNAF.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("MaleficentWorld")) {
+		
+		System.out.println("Maleficent World Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Maleficent World Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Maleficent World Mod");
+            e.printStackTrace(System.err);
+        }
+			MaleficentWorld.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("RandNMixMod")) {
+		
+		System.out.println("RandNMixMod Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded RandNMixMod Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load RandNMixMod Mod");
+            e.printStackTrace(System.err);
+        }
+			RandNMixMod.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("fantasymod")) {
+		
+		System.out.println("FantasyMod Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded FantasyMod Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load FantasyMod Mod");
+            e.printStackTrace(System.err);
+        }
+			FantasyMod.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("Yogmod")) {
+		
+		System.out.println("Yogmod Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Yogmod Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Yogmod Mod");
+            e.printStackTrace(System.err);
+        }
+			Yogmod.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("MobsModV6")) {
+		
+		System.out.println("More Animals Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded More Animals Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load More Animals Mod");
+            e.printStackTrace(System.err);
+        }
+			MoreAnimalsMod.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("CryptoCraft")) {
+		
+		System.out.println("CryptoCraft Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded CryptoCraft Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load CryptoCraft Mod");
+            e.printStackTrace(System.err);
+        }
+			CryptoCraft.registerTrophies();
+		}
+	if (Loader.isModLoaded("LittleBigCraft")) {
+		
+		System.out.println("LittleBigCraft Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded LittleBigCraft Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load LittleBigCraft Mod");
+            e.printStackTrace(System.err);
+        }
+			LittleBigCraft.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("RandomMobsMod")) {
+		
+		System.out.println("Random Mobs Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Random Mobs Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Random Mobs Mod");
+            e.printStackTrace(System.err);
+        }
+			RandomMobsMod.registerTrophies();
 		}
 }
 
