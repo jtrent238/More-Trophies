@@ -51,4 +51,4 @@ Adds more trophies to [ObsTrophies mod](http://bit.ly/2uGa7P4)
 * [CryptoCraft](http://bit.ly/2A7mXfe)
 * [LittleBigCraft](http://bit.ly/2hHEv9Y)
 * [Random Mobs Mod](http://bit.ly/2zNst5F)
->>>>>>> origin/master
+* [FatherToast Special Mobs Mod](http://bit.ly/2BjXxIG)
