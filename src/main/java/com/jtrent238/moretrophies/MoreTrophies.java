@@ -35,6 +35,7 @@ import com.jtrent238.moretrophies.trophyloaders.ExtraGolems;
 import com.jtrent238.moretrophies.trophyloaders.FNaFUniverse;
 import com.jtrent238.moretrophies.trophyloaders.FandomCraft;
 import com.jtrent238.moretrophies.trophyloaders.FantasyMod;
+import com.jtrent238.moretrophies.trophyloaders.FatherToastSpecialMobs;
 import com.jtrent238.moretrophies.trophyloaders.FrozenArctic;
 import com.jtrent238.moretrophies.trophyloaders.HardcoreEnderExpansion;
 import com.jtrent238.moretrophies.trophyloaders.JTYouTubers;
@@ -111,7 +112,7 @@ public class MoreTrophies
 
 	@Instance(MODID)
     public static MoreTrophies instance;
-	public static final String MODVERSION = "1.0.2.2";
+	public static final String MODVERSION = "1.0.2.3";
 	public static final String MODNAME = "jtrent238's More Trophies Mod";
 	public static final String MODAUTHOR = "jtrent238";
 	public static final String MC = "1.7.10";
@@ -813,6 +814,19 @@ public void init(FMLInitializationEvent event) throws IOException
             e.printStackTrace(System.err);
         }
 			RandomMobsMod.registerTrophies();
+		}
+
+	if (Loader.isModLoaded("SpecialMobs")) {
+		
+		System.out.println("FatherToast Special Mobs Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded FatherToast Special Mobs Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load FatherToast Special Mobs Mod");
+            e.printStackTrace(System.err);
+        }
+			FatherToastSpecialMobs.registerTrophies();
 		}
 }
 

@@ -16,6 +16,7 @@ public class ItemLoader {
 	public static ItemSpecialSword jtrent238_Sword;
 	public static ItemSpecialSword Golem_Sword;
 	public static ItemSpecialSword Sweet_Sword;
+	public static ItemSpecialSword FatherToast_Sword;
 	
 	public static void loadItems() {
 
@@ -36,6 +37,7 @@ public class ItemLoader {
 		Golem_Sword.setTextureName(MoreTrophies.MODID + ":Golem_Sword");
 		Golem_Sword.setUnlocalizedName("Golem_Sword");
 		Golem_Sword.addModID("golems");
+		Golem_Sword.forModIDsTooltipOverride("Extra Golems Mod");
 		Golem_Sword.setDropChances(0.1F, 0.2F, 0.3F, 0.4F);
 		
 		
@@ -43,7 +45,15 @@ public class ItemLoader {
 		Sweet_Sword.setTextureName(MoreTrophies.MODID + ":Sweet_Sword");
 		Sweet_Sword.setUnlocalizedName("Sweet_Sword");
 		Sweet_Sword.addModID("candycraftmod");
+		Sweet_Sword.forModIDsTooltipOverride("CandyCraft Mod");
 		Sweet_Sword.setDropChances(0.1F, 0.2F, 0.3F, 0.4F);
+		
+		FatherToast_Sword = (ItemSpecialSword) new ItemSpecialSword(ToolMaterial.EMERALD, ObsTrophiesAoA.creativeTab);
+		FatherToast_Sword.setTextureName(MoreTrophies.MODID + ":FatherToast_Sword");
+		FatherToast_Sword.setUnlocalizedName("FatherToast_Sword");
+		FatherToast_Sword.addModID("SpecialMobs");
+		FatherToast_Sword.forModIDsTooltipOverride("FatherToast Special Mobs Mod");
+		FatherToast_Sword.setDropChances(0.1F, 0.2F, 0.3F, 0.4F);
 		
 		registerItems();
 	}
@@ -54,6 +64,7 @@ public class ItemLoader {
 		GameRegistry.registerItem(jtrent238_Sword, "jtrent238_Sword", MoreTrophies.MODID);
 		GameRegistry.registerItem(Golem_Sword, "Golem_Sword", MoreTrophies.MODID);
 		GameRegistry.registerItem(Sweet_Sword, "Sweet_Sword", MoreTrophies.MODID);
+		GameRegistry.registerItem(FatherToast_Sword, "FatherToast_Sword", MoreTrophies.MODID);
 		
 	}
 
