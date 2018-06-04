@@ -27,6 +27,7 @@ import com.jtrent238.moretrophies.trophyloaders.AshtonsWatermelonMod;
 import com.jtrent238.moretrophies.trophyloaders.BabyMobs;
 import com.jtrent238.moretrophies.trophyloaders.CandyCraft;
 import com.jtrent238.moretrophies.trophyloaders.CryptoCraft;
+import com.jtrent238.moretrophies.trophyloaders.DungeonMobs;
 import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod;
 import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod_Christmas;
 import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod_Halloween;
@@ -827,6 +828,19 @@ public void init(FMLInitializationEvent event) throws IOException
             e.printStackTrace(System.err);
         }
 			FatherToastSpecialMobs.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("dungeonmobs")) {
+		
+		System.out.println("Dungeon Mobs Mod Loaded");
+		try {
+            LogHelper.log(Level.INFO, "Loaded Dungeon Mobs Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Dungeon Mobs Mod");
+            e.printStackTrace(System.err);
+        }
+			DungeonMobs.registerTrophies();
 		}
 }
 
