@@ -18,15 +18,17 @@ import com.jim.obscore.containers.BlockDetails;
 import com.jim.obscore.lib.ObsLog;
 import com.jim.obstrophiesaoa.trophy.TrophyAoA;
 import com.jim.obstrophiesaoa.trophy.TrophyRegistry;
-import com.jtrent238.moretrophies.blocks.BlockTrophyPlayer;
 import com.jtrent238.moretrophies.common.CommonProxy;
 import com.jtrent238.moretrophies.trophyloaders.AdInfernos;
 import com.jtrent238.moretrophies.trophyloaders.AnimalBikes;
 import com.jtrent238.moretrophies.trophyloaders.AquaCreeper;
 import com.jtrent238.moretrophies.trophyloaders.AshtonsWatermelonMod;
 import com.jtrent238.moretrophies.trophyloaders.BabyMobs;
+import com.jtrent238.moretrophies.trophyloaders.BackportMod;
 import com.jtrent238.moretrophies.trophyloaders.CandyCraft;
+import com.jtrent238.moretrophies.trophyloaders.CrazyOres;
 import com.jtrent238.moretrophies.trophyloaders.CryptoCraft;
+import com.jtrent238.moretrophies.trophyloaders.DinoDimension;
 import com.jtrent238.moretrophies.trophyloaders.DungeonMobs;
 import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod;
 import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod_Christmas;
@@ -37,8 +39,10 @@ import com.jtrent238.moretrophies.trophyloaders.FNaFUniverse;
 import com.jtrent238.moretrophies.trophyloaders.FandomCraft;
 import com.jtrent238.moretrophies.trophyloaders.FantasyMod;
 import com.jtrent238.moretrophies.trophyloaders.FatherToastSpecialMobs;
+import com.jtrent238.moretrophies.trophyloaders.FossilsandArcheologyRevival;
 import com.jtrent238.moretrophies.trophyloaders.FrozenArctic;
 import com.jtrent238.moretrophies.trophyloaders.HardcoreEnderExpansion;
+import com.jtrent238.moretrophies.trophyloaders.InventoryPets;
 import com.jtrent238.moretrophies.trophyloaders.JTYouTubers;
 import com.jtrent238.moretrophies.trophyloaders.JurassiCraft;
 import com.jtrent238.moretrophies.trophyloaders.JustaFewFish;
@@ -57,7 +61,7 @@ import com.jtrent238.moretrophies.trophyloaders.MyPetSushi;
 import com.jtrent238.moretrophies.trophyloaders.OreSpiders;
 import com.jtrent238.moretrophies.trophyloaders.Orespawn;
 import com.jtrent238.moretrophies.trophyloaders.ParziStarWars;
-import com.jtrent238.moretrophies.trophyloaders.PlayerTrophies;
+import com.jtrent238.moretrophies.trophyloaders.Pixelmon;
 import com.jtrent238.moretrophies.trophyloaders.Potatians;
 import com.jtrent238.moretrophies.trophyloaders.ProjectFruit;
 import com.jtrent238.moretrophies.trophyloaders.RandNMixMod;
@@ -65,6 +69,7 @@ import com.jtrent238.moretrophies.trophyloaders.RandomMobsMod;
 import com.jtrent238.moretrophies.trophyloaders.ReptileMod;
 import com.jtrent238.moretrophies.trophyloaders.SoggyEaster;
 import com.jtrent238.moretrophies.trophyloaders.SpiderQueen;
+import com.jtrent238.moretrophies.trophyloaders.TConstruct;
 import com.jtrent238.moretrophies.trophyloaders.TattleTailCraft;
 import com.jtrent238.moretrophies.trophyloaders.TheUltimateUnicornMod;
 import com.jtrent238.moretrophies.trophyloaders.TheValeOfShadows;
@@ -113,19 +118,14 @@ public class MoreTrophies
 
 	@Instance(MODID)
     public static MoreTrophies instance;
-	public static final String MODVERSION = "1.0.2.3";
+	public static final String MODVERSION = "1.0.2.4";
 	public static final String MODNAME = "jtrent238's More Trophies Mod";
 	public static final String MODAUTHOR = "jtrent238";
 	public static final String MC = "1.7.10";
 	public static final String OBSTrophiesVersion = "1.6.0";
 	public static final String OBSCoreVersion = "1.4.1";
 
-
-	private BlockTrophyPlayer blockPlayerTrophy;
-
-
 	private List<AbstractLanguageDetails> _languageDetails = new ArrayList();
-
 
 
 	@ForgeSubscribe(priority = EventPriority.NORMAL)
@@ -162,7 +162,7 @@ public void init(FMLInitializationEvent event) throws IOException
 	//Register Trophies for mods
 	
 		Minecraft.registerTrophies();
-		PlayerTrophies.registerTrophies();
+		//PlayerTrophies.registerTrophies();
 		
 		if(ConfigManager.AUTOTROPHYLOADER == true){
 
@@ -842,15 +842,99 @@ public void init(FMLInitializationEvent event) throws IOException
         }
 			DungeonMobs.registerTrophies();
 		}
+
+
+	if (Loader.isModLoaded("InventoryPets")) {
+	
+		System.out.println("Inventory Pets Mod Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded Inventory Pets Mod");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load Inventory Pets Mod");
+			e.printStackTrace(System.err);
+		}
+			InventoryPets.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("fossilsarcheology")) {
+		
+		System.out.println("Fossils and Archeology Revival Mod Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded Fossils and Archeology Revival Mod");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load Fossils and Archeology Revival Mod");
+			e.printStackTrace(System.err);
+		}
+			FossilsandArcheologyRevival.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("crazyores")) {
+		
+		System.out.println("CrazyOres Mod Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded CrazyOres Mod");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load CrazyOres Mod");
+			e.printStackTrace(System.err);
+		}
+			CrazyOres.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("pixelmon")) {
+		
+		System.out.println("Pixelmon Mod Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded Pixelmon Mod");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load Pixelmon Mod");
+			e.printStackTrace(System.err);
+		}
+			Pixelmon.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("backportmod")) {
+		
+		System.out.println("Backport Mod Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded Backport Mod");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load Backport Mod");
+			e.printStackTrace(System.err);
+		}
+			BackportMod.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("dinodim")) {
+		
+		System.out.println("DinoDimension Mod Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded DinoDimension Mod");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load DinoDimension Mod");
+			e.printStackTrace(System.err);
+		}
+			DinoDimension.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("TConstruct")) {
+		
+		System.out.println("Tinkers Construct Mod Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded Tinkers Construct Mod");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load Tinkers Construct Mod");
+			e.printStackTrace(System.err);
+		}
+			TConstruct.registerTrophies();
+		}
 }
-
-
-
-
-
-
-
-
 
 @Mod.EventHandler
 public void postInit(FMLPostInitializationEvent event) {
@@ -873,27 +957,5 @@ public void serverStart(FMLServerStartingEvent event)
      //manager.registerCommand(new CommandModInfo());
      //manager.registerCommand(new CommandChangelog());
 }
-
-
-public static List<String> getAllNames()
-{
-  Set<String> names = new HashSet();
-  //names.addAll(Arrays.asList(others));
-  //names.addAll(Arrays.asList(modders));
-  //names.addAll(Arrays.asList(youtubers));
-  //names.addAll(Arrays.asList(mojang));
-  //names.addAll(Arrays.asList(mindCrack));
-  //names.addAll(Arrays.asList(hermitcraft));
-  //names.addAll(Arrays.asList(forgeCraft));
-  //names.addAll(Arrays.asList(ftb));
-  //names.addAll(Arrays.asList(technic));
-  
-  /*if (enableModSent) {
-    names.addAll(modsent);
-  }*/
-  
-  return new ArrayList(names);
-}
-
-					
+			
 }

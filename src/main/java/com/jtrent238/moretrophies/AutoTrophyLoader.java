@@ -12,20 +12,27 @@ public class AutoTrophyLoader{
 		
   public static ArrayList<String> entity_ids;
   private static String modid = "minecraft";
-
+private static int lineCount = 0;
+  
+		
   //Construct String from file
   @SuppressWarnings("resource")
   public static void constructor(String filename) throws IOException{
+	  
+	  List<String> entity_ids = new ArrayList<String>();
+	  BufferedReader reader = new BufferedReader(new FileReader("obscore_entity_ids.txt"));
+	  String line;
 
-  ArrayList entity_ids = new ArrayList();
-  BufferedReader read = new BufferedReader(new FileReader("obscore_entity_ids.txt"));
-  String line = read.readLine();
-  read.lines().count();
-
-
-    	entity_ids.add(line.indexOf(-1));
-    	
-    	IgnoringEntityIDs();
+	  while ((line = reader.readLine()) != null) {
+		  entity_ids.add(line);
+		  	//TrophyRegistry.getInstance().addTrophies(new TrophyAoA[] { new TrophyAoA(modid, line)});
+		  	System.out.println("Found entity with ID: " + line);
+			//System.out.println("Attempted to register a trophy for entity with ID: " + line);
+	  }
+	  
+	  reader.close();
+	  
+	  
     	entity_ids.remove("Arrow");
     	entity_ids.remove("Bat");
     	entity_ids.remove("Blaze");
@@ -84,9 +91,8 @@ public class AutoTrophyLoader{
     	entity_ids.remove("XPOrb");
     	entity_ids.remove("Zombie");
       //line = reader.readline();
+    	IgnoringEntityIDs();
     }
-    
-
 
 
 
@@ -150,7 +156,7 @@ public class AutoTrophyLoader{
     	System.out.println("[DEBUG]: Ignoreing Entity with ID: Wolf, It was not added");
     	System.out.println("[DEBUG]: Ignoreing Entity with ID: XPOrb, It was not added");
     	System.out.println("[DEBUG]: Ignoreing Entity with ID: Zombie, It was not added");
-    	
+    	//registerTrophies();
 }
 
 
@@ -159,8 +165,11 @@ public class AutoTrophyLoader{
 
 	public static void registerTrophies() {
 		
-		TrophyRegistry.getInstance().addTrophies(new TrophyAoA[] { new TrophyAoA(modid, entity_ids.toString())});
-		System.out.println("Attempted to register a trophy for entity with ID: " + entity_ids.toString());
+		for (int i = 0; i < lineCount ; i++) {
+			
+		TrophyRegistry.getInstance().addTrophies(new TrophyAoA[] { new TrophyAoA(modid, entity_ids.get(i))});
+		System.out.println("Attempted to register a trophy for entity with ID: " + entity_ids.get(i));
 	}
 	
+}
 }
