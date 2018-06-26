@@ -118,7 +118,7 @@ public class MoreTrophies
 
 	@Instance(MODID)
     public static MoreTrophies instance;
-	public static final String MODVERSION = "1.0.2.4";
+	public static final String MODVERSION = "1.0.2.5";
 	public static final String MODNAME = "jtrent238's More Trophies Mod";
 	public static final String MODAUTHOR = "jtrent238";
 	public static final String MC = "1.7.10";
