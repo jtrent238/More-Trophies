@@ -25,9 +25,9 @@ private static int lineCount = 0;
 
 	  while ((line = reader.readLine()) != null) {
 		  entity_ids.add(line);
-		  	//TrophyRegistry.getInstance().addTrophies(new TrophyAoA[] { new TrophyAoA(modid, line)});
+		  	TrophyRegistry.getInstance().addTrophies(new TrophyAoA[] { new TrophyAoA(modid, line)});
 		  	System.out.println("Found entity with ID: " + line);
-			//System.out.println("Attempted to register a trophy for entity with ID: " + line);
+			System.out.println("Attempted to register a trophy for entity with ID: " + line);
 	  }
 	  
 	  reader.close();

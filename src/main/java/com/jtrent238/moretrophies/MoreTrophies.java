@@ -63,6 +63,7 @@ import com.jtrent238.moretrophies.trophyloaders.Orespawn;
 import com.jtrent238.moretrophies.trophyloaders.ParziStarWars;
 import com.jtrent238.moretrophies.trophyloaders.Pixelmon;
 import com.jtrent238.moretrophies.trophyloaders.Potatians;
+import com.jtrent238.moretrophies.trophyloaders.PrimitiveMobs;
 import com.jtrent238.moretrophies.trophyloaders.ProjectFruit;
 import com.jtrent238.moretrophies.trophyloaders.RandNMixMod;
 import com.jtrent238.moretrophies.trophyloaders.RandomMobsMod;
@@ -70,6 +71,7 @@ import com.jtrent238.moretrophies.trophyloaders.ReptileMod;
 import com.jtrent238.moretrophies.trophyloaders.SoggyEaster;
 import com.jtrent238.moretrophies.trophyloaders.SpiderQueen;
 import com.jtrent238.moretrophies.trophyloaders.TConstruct;
+import com.jtrent238.moretrophies.trophyloaders.TF2stuff;
 import com.jtrent238.moretrophies.trophyloaders.TattleTailCraft;
 import com.jtrent238.moretrophies.trophyloaders.TheUltimateUnicornMod;
 import com.jtrent238.moretrophies.trophyloaders.TheValeOfShadows;
@@ -933,6 +935,32 @@ public void init(FMLInitializationEvent event) throws IOException
 			e.printStackTrace(System.err);
 		}
 			TConstruct.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("primitivemobs")) {
+		
+		System.out.println("Primitive Mobs Mod Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded Primitive Mobs Mod");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load Primitive Mobs Mod");
+			e.printStackTrace(System.err);
+		}
+			PrimitiveMobs.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("rafradek_tf2_weapons")) {
+		
+		System.out.println("TF2 stuff Mod Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded TF2 stuff Mod");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load TF2 stuff Mod");
+			e.printStackTrace(System.err);
+		}
+			TF2stuff.registerTrophies();
 		}
 }
 

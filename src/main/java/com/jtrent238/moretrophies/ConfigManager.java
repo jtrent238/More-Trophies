@@ -8,6 +8,8 @@ public class ConfigManager {
 
 	private static String CATEGORY_MC = "Minecraft Trophies";
 	private static String CATEGORY_SWM = "Parzi's Star Wars Mod Trophies";
+	private static String CATEGORY_PM = "Primitive Mobs Mod Trophies";
+	private static String CATEGORY_TF2STUFF = "TF2 stuff Mod Trophies";
 	private static String CATEGORY_TWEAKS = "Tweaks";
 	
 	public static boolean ENABLE_0;
@@ -108,6 +110,50 @@ public class ConfigManager {
 	public static boolean SWM_66;
 	public static boolean SWM_67;
 	public static boolean SWM_68;
+	public static boolean PM_0;
+	public static boolean PM_1;
+	public static boolean PM_2;
+	public static boolean PM_3;
+	public static boolean PM_4;
+	public static boolean PM_5;
+	public static boolean PM_6;
+	public static boolean PM_7;
+	public static boolean PM_8;
+	public static boolean PM_9;
+	public static boolean PM_10;
+	public static boolean PM_11;
+	public static boolean PM_12;
+	public static boolean PM_13;
+	public static boolean PM_14;
+	public static boolean PM_15;
+	public static boolean PM_16;
+	public static boolean PM_17;
+	public static boolean PM_18;
+	public static boolean PM_19;
+	public static boolean PM_20;
+	public static boolean PM_21;
+	public static boolean PM_22;
+	public static boolean TF2STUFF_0;
+	public static boolean TF2STUFF_1;
+	public static boolean TF2STUFF_2;
+	public static boolean TF2STUFF_3;
+	public static boolean TF2STUFF_4;
+	public static boolean TF2STUFF_5;
+	public static boolean TF2STUFF_6;
+	public static boolean TF2STUFF_7;
+	public static boolean TF2STUFF_8;
+	public static boolean TF2STUFF_9;
+	public static boolean TF2STUFF_10;
+	public static boolean TF2STUFF_11;
+	public static boolean TF2STUFF_12;
+	public static boolean TF2STUFF_13;
+	public static boolean TF2STUFF_14;
+	public static boolean TF2STUFF_15;
+	public static boolean TF2STUFF_16;
+	public static boolean TF2STUFF_17;
+	public static boolean TF2STUFF_18;
+	
+	
 	public static boolean AUTOTROPHYLOADER = true;
 
 
@@ -138,7 +184,7 @@ public class ConfigManager {
 		ENABLE_9 = config.get(CATEGORY_MC, "Enable Ghast Trophy", true).getBoolean(true);
 		ENABLE_10 = config.get(CATEGORY_MC, "Enable Giant Trophy", false).getBoolean(false);
 		ENABLE_11 = config.get(CATEGORY_MC, "Enable Magma Cube Trophy", true).getBoolean(true);
-		ENABLE_12 = config.get(CATEGORY_MC, "Enable Mooshroom Cube Trophy", true).getBoolean(true);
+		ENABLE_12 = config.get(CATEGORY_MC, "Enable Mooshroom Trophy", true).getBoolean(true);
 		ENABLE_13 = config.get(CATEGORY_MC, "Enable Ozelot Trophy", true).getBoolean(true);
 		ENABLE_14 = config.get(CATEGORY_MC, "Enable ZombiePigMan Trophy", true).getBoolean(true);
 		ENABLE_15 = config.get(CATEGORY_MC, "Enable Sheep Trophy", true).getBoolean(true);
@@ -226,6 +272,59 @@ public class ConfigManager {
 		SWM_67 = config.get(CATEGORY_SWM, "Enable yodaBiped", true).getBoolean(true);
 		SWM_68 = config.get(CATEGORY_SWM, "Enable ywing", false).getBoolean(false);
 			}
+		
+		if (Loader.isModLoaded("primitivemobs")) {
+			
+			PM_0 = config.get(CATEGORY_PM, "Enable BabySpider", true).getBoolean(true);
+			PM_1 = config.get(CATEGORY_PM, "Enable Ball", false).getBoolean(false);
+			PM_2 = config.get(CATEGORY_PM, "Enable BewitchedTome", true).getBoolean(true);
+			PM_3 = config.get(CATEGORY_PM, "Enable BlazingJuggernaut", true).getBoolean(true);
+			PM_4 = config.get(CATEGORY_PM, "Enable BrainSlime", true).getBoolean(true);
+			PM_5 = config.get(CATEGORY_PM, "Enable Chameleon", true).getBoolean(true);
+			PM_6 = config.get(CATEGORY_PM, "Enable FestiveCreeper", true).getBoolean(true);
+			PM_7 = config.get(CATEGORY_PM, "Enable HauntedTool", false).getBoolean(false);
+			PM_8 = config.get(CATEGORY_PM, "Enable Lily", true).getBoolean(true);
+			PM_9 = config.get(CATEGORY_PM, "Enable LilyLurker", true).getBoolean(true);
+			PM_10 = config.get(CATEGORY_PM, "Enable LostMiner", true).getBoolean(true);
+			PM_11 = config.get(CATEGORY_PM, "Enable MimicChest", true).getBoolean(true);
+			PM_12 = config.get(CATEGORY_PM, "Enable Minion", true).getBoolean(true);
+			PM_13 = config.get(CATEGORY_PM, "Enable MotherSpider", true).getBoolean(true);
+			PM_14 = config.get(CATEGORY_PM, "Enable RocketCreeper", true).getBoolean(true);
+			PM_15 = config.get(CATEGORY_PM, "Enable Sheepman", true).getBoolean(true);
+			PM_16 = config.get(CATEGORY_PM, "Enable SheepmanSmith", true).getBoolean(true);
+			PM_17 = config.get(CATEGORY_PM, "Enable SkeletonWarrior", true).getBoolean(true);
+			PM_18 = config.get(CATEGORY_PM, "Enable SpawnEgg", false).getBoolean(false);
+			PM_19 = config.get(CATEGORY_PM, "Enable Summoner", true).getBoolean(true);
+			PM_20 = config.get(CATEGORY_PM, "Enable SupportCreeper", true).getBoolean(true);
+			PM_21 = config.get(CATEGORY_PM, "Enable TravelingMerchant", true).getBoolean(true);
+			PM_22 = config.get(CATEGORY_PM, "Enable TreasureSlime", true).getBoolean(true);
+			
+		}
+		
+		if (Loader.isModLoaded("rafradek_tf2_weapons")) {
+			
+		TF2STUFF_0 = config.get(CATEGORY_TF2STUFF, "Enable demoman", true).getBoolean(true);
+		TF2STUFF_1 = config.get(CATEGORY_TF2STUFF, "Enable dispenser", false).getBoolean(false);
+		TF2STUFF_2 = config.get(CATEGORY_TF2STUFF, "Enable engineer", true).getBoolean(true);
+		TF2STUFF_3 = config.get(CATEGORY_TF2STUFF, "Enable flame", false).getBoolean(false);
+		TF2STUFF_4 = config.get(CATEGORY_TF2STUFF, "Enable grenade", false).getBoolean(false);
+		TF2STUFF_5 = config.get(CATEGORY_TF2STUFF, "Enable hale", true).getBoolean(true);
+		TF2STUFF_6 = config.get(CATEGORY_TF2STUFF, "Enable heavy", true).getBoolean(true);
+		TF2STUFF_7 = config.get(CATEGORY_TF2STUFF, "Enable medic", true).getBoolean(true);
+		TF2STUFF_8 = config.get(CATEGORY_TF2STUFF, "Enable pyro", true).getBoolean(true);
+		TF2STUFF_9 = config.get(CATEGORY_TF2STUFF, "Enable rocket", false).getBoolean(false);
+		TF2STUFF_10 = config.get(CATEGORY_TF2STUFF, "Enable scout", true).getBoolean(true);
+		TF2STUFF_11 = config.get(CATEGORY_TF2STUFF, "Enable sentry", false).getBoolean(false);
+		TF2STUFF_12 = config.get(CATEGORY_TF2STUFF, "Enable sniper", true).getBoolean(true);
+		TF2STUFF_13 = config.get(CATEGORY_TF2STUFF, "Enable soldier", true).getBoolean(true);
+		TF2STUFF_14 = config.get(CATEGORY_TF2STUFF, "Enable spy", true).getBoolean(true);
+		TF2STUFF_15 = config.get(CATEGORY_TF2STUFF, "Enable sticky", false).getBoolean(false);
+		TF2STUFF_16 = config.get(CATEGORY_TF2STUFF, "Enable syringe", false).getBoolean(false);
+		TF2STUFF_17 = config.get(CATEGORY_TF2STUFF, "Enable teleporter", false).getBoolean(false);
+		
+		
+		}
+		
 		AUTOTROPHYLOADER = config.get(CATEGORY_TWEAKS, "Enable Auto Trophy Loader", false).getBoolean(false);
 		
 		/*
