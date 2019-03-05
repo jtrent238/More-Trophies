@@ -28,8 +28,10 @@ import com.jtrent238.moretrophies.trophyloaders.BackportMod;
 import com.jtrent238.moretrophies.trophyloaders.CandyCraft;
 import com.jtrent238.moretrophies.trophyloaders.CrazyOres;
 import com.jtrent238.moretrophies.trophyloaders.CryptoCraft;
+import com.jtrent238.moretrophies.trophyloaders.Digimobs;
 import com.jtrent238.moretrophies.trophyloaders.DinoDimension;
 import com.jtrent238.moretrophies.trophyloaders.DungeonMobs;
+import com.jtrent238.moretrophies.trophyloaders.ElementalCreepers;
 import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod;
 import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod_Christmas;
 import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod_Halloween;
@@ -58,6 +60,9 @@ import com.jtrent238.moretrophies.trophyloaders.MoreShearables;
 import com.jtrent238.moretrophies.trophyloaders.MrGorrila;
 import com.jtrent238.moretrophies.trophyloaders.MrWhalesAminalsMod;
 import com.jtrent238.moretrophies.trophyloaders.MyPetSushi;
+import com.jtrent238.moretrophies.trophyloaders.MysticalMobs;
+import com.jtrent238.moretrophies.trophyloaders.NeighborCraft;
+import com.jtrent238.moretrophies.trophyloaders.NightmareCreatures;
 import com.jtrent238.moretrophies.trophyloaders.OreSpiders;
 import com.jtrent238.moretrophies.trophyloaders.Orespawn;
 import com.jtrent238.moretrophies.trophyloaders.ParziStarWars;
@@ -72,14 +77,18 @@ import com.jtrent238.moretrophies.trophyloaders.SoggyEaster;
 import com.jtrent238.moretrophies.trophyloaders.SpiderQueen;
 import com.jtrent238.moretrophies.trophyloaders.TConstruct;
 import com.jtrent238.moretrophies.trophyloaders.TF2stuff;
+import com.jtrent238.moretrophies.trophyloaders.TakumiCraft;
 import com.jtrent238.moretrophies.trophyloaders.TattleTailCraft;
+import com.jtrent238.moretrophies.trophyloaders.Teletubbies;
 import com.jtrent238.moretrophies.trophyloaders.TheUltimateUnicornMod;
 import com.jtrent238.moretrophies.trophyloaders.TheValeOfShadows;
 import com.jtrent238.moretrophies.trophyloaders.VaraziusFNAF;
 import com.jtrent238.moretrophies.trophyloaders.WeepingAngels;
 import com.jtrent238.moretrophies.trophyloaders.WildMobsMod;
+import com.jtrent238.moretrophies.trophyloaders.WorldofWarcraft;
 import com.jtrent238.moretrophies.trophyloaders.Yogmod;
 import com.jtrent238.moretrophies.trophyloaders.ZeldaSwordSkills;
+import com.jtrent238.moretrophies.trophyloaders.ZoocraftDiscoveries;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -961,6 +970,123 @@ public void init(FMLInitializationEvent event) throws IOException
 			e.printStackTrace(System.err);
 		}
 			TF2stuff.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("ZoocraftDiscoveries")) {
+		
+		System.out.println("Zoocraft Discoveries Mod Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded Zoocraft Discoveries Mod");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load Zoocraft Discoveries Mod");
+			e.printStackTrace(System.err);
+		}
+			ZoocraftDiscoveries.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("digimobs")) {
+		
+		System.out.println("Digimobs Mod Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded Digimobs Mod");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load Digimobs Mod");
+			e.printStackTrace(System.err);
+		}
+			Digimobs.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("elementalcreepers")) {
+		
+		System.out.println("Elemental Creepers Mod Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded Elemental Creepers Mod");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load Elemental Creepers Mod");
+			e.printStackTrace(System.err);
+		}
+			ElementalCreepers.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("Teletubbies")) {
+		
+		System.out.println("Teletubbies Mod Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded Teletubbies Mod");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load Teletubbies Mod");
+			e.printStackTrace(System.err);
+		}
+			Teletubbies.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("hnm")) {
+		
+		System.out.println("NeighborCraft: The Hello Neighbor Mod! Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded NeighborCraft: The Hello Neighbor Mod!");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load NeighborCraft: The Hello Neighbor Mod!");
+			e.printStackTrace(System.err);
+		}
+			NeighborCraft.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("MysticalMobs")) {
+		
+		System.out.println("Mystical Mobs Mod Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded Mystical Mobs Mod");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load Mystical Mobs Mod");
+			e.printStackTrace(System.err);
+		}
+			MysticalMobs.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("NightmareCreatures")) {
+		
+		System.out.println("Nightmare Creatures II Mod Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded Nightmare Creatures II Mod");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load Nightmare Creatures II Mod");
+			e.printStackTrace(System.err);
+		}
+			NightmareCreatures.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("TakumiMod")) {
+		
+		System.out.println("Takumi Craft Mod Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded Takumi Craft Mod");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load Takumi Craft Mod");
+			e.printStackTrace(System.err);
+		}
+			TakumiCraft.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("wow")) {
+		
+		System.out.println("World of Warcraft Mod Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded World of Warcraft Mod");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load World of Warcraft Mod");
+			e.printStackTrace(System.err);
+		}
+			WorldofWarcraft.registerTrophies();
 		}
 }
 

@@ -7,7 +7,6 @@ public class AshtonsWatermelonMod {
 
 	public static void registerTrophies() {
 
-
 		TrophyRegistry.getInstance().addTrophies(new TrophyAoA[] { new TrophyAoA("minecraft", "creppywaterboomer")});
 	
 	}

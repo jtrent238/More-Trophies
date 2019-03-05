@@ -12,9 +12,9 @@ public class PrimitiveMobs {
 		if(ConfigManager.PM_0 == true){
 			TrophyRegistry.getInstance().addTrophies(new TrophyAoA[] { new TrophyAoA("primitivemobs", "BabySpider")});
 		}
-		if(ConfigManager.PM_1 == true){
+	    /*if(ConfigManager.PM_1 == true){
 			TrophyRegistry.getInstance().addTrophies(new TrophyAoA[] { new TrophyAoA("primitivemobs", "Ball")});
-		}
+		}*/
 		if(ConfigManager.PM_2 == true){
 			TrophyRegistry.getInstance().addTrophies(new TrophyAoA[] { new TrophyAoA("primitivemobs", "BewitchedTome")});
 		}
@@ -30,9 +30,9 @@ public class PrimitiveMobs {
 		if(ConfigManager.PM_6 == true){
 			TrophyRegistry.getInstance().addTrophies(new TrophyAoA[] { new TrophyAoA("primitivemobs", "FestiveCreeper")});
 		}
-		if(ConfigManager.PM_7 == true){
+		/*if(ConfigManager.PM_7 == true){
 			TrophyRegistry.getInstance().addTrophies(new TrophyAoA[] { new TrophyAoA("primitivemobs", "HauntedTool")});
-		}
+		}*/
 		if(ConfigManager.PM_8 == true){
 			TrophyRegistry.getInstance().addTrophies(new TrophyAoA[] { new TrophyAoA("primitivemobs", "Lily")});
 		}
