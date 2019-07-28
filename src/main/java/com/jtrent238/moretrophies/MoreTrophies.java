@@ -53,6 +53,7 @@ import com.jtrent238.moretrophies.trophyloaders.LittleBigCraft;
 import com.jtrent238.moretrophies.trophyloaders.LostWorld;
 import com.jtrent238.moretrophies.trophyloaders.LotsofMobs;
 import com.jtrent238.moretrophies.trophyloaders.MaleficentWorld;
+import com.jtrent238.moretrophies.trophyloaders.MegamanLegendsCraft;
 import com.jtrent238.moretrophies.trophyloaders.Minecraft;
 import com.jtrent238.moretrophies.trophyloaders.MoZombies;
 import com.jtrent238.moretrophies.trophyloaders.MoreAnimalsMod;
@@ -63,10 +64,12 @@ import com.jtrent238.moretrophies.trophyloaders.MyPetSushi;
 import com.jtrent238.moretrophies.trophyloaders.MysticalMobs;
 import com.jtrent238.moretrophies.trophyloaders.NeighborCraft;
 import com.jtrent238.moretrophies.trophyloaders.NightmareCreatures;
+import com.jtrent238.moretrophies.trophyloaders.NotEnoughCats;
 import com.jtrent238.moretrophies.trophyloaders.OreSpiders;
 import com.jtrent238.moretrophies.trophyloaders.Orespawn;
 import com.jtrent238.moretrophies.trophyloaders.ParziStarWars;
 import com.jtrent238.moretrophies.trophyloaders.Pixelmon;
+import com.jtrent238.moretrophies.trophyloaders.PlayerHunter;
 import com.jtrent238.moretrophies.trophyloaders.Potatians;
 import com.jtrent238.moretrophies.trophyloaders.PrimitiveMobs;
 import com.jtrent238.moretrophies.trophyloaders.ProjectFruit;
@@ -85,6 +88,7 @@ import com.jtrent238.moretrophies.trophyloaders.TheValeOfShadows;
 import com.jtrent238.moretrophies.trophyloaders.VaraziusFNAF;
 import com.jtrent238.moretrophies.trophyloaders.WeepingAngels;
 import com.jtrent238.moretrophies.trophyloaders.WildMobsMod;
+import com.jtrent238.moretrophies.trophyloaders.Witchery;
 import com.jtrent238.moretrophies.trophyloaders.WorldofWarcraft;
 import com.jtrent238.moretrophies.trophyloaders.Yogmod;
 import com.jtrent238.moretrophies.trophyloaders.ZeldaSwordSkills;
@@ -129,7 +133,7 @@ public class MoreTrophies
 
 	@Instance(MODID)
     public static MoreTrophies instance;
-	public static final String MODVERSION = "1.0.2.5";
+	public static final String MODVERSION = "indev-1.0.2.5";
 	public static final String MODNAME = "jtrent238's More Trophies Mod";
 	public static final String MODAUTHOR = "jtrent238";
 	public static final String MC = "1.7.10";
@@ -1087,6 +1091,58 @@ public void init(FMLInitializationEvent event) throws IOException
 			e.printStackTrace(System.err);
 		}
 			WorldofWarcraft.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("witchery")) {
+		
+		System.out.println("Witchery Mod Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded Witchery Mod");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load Witchery Mod");
+			e.printStackTrace(System.err);
+		}
+			Witchery.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("notenoughcats")) {
+		
+		System.out.println("Not Enough Cats Mod Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded Not Enough Cats Mod");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load Not Enough Cats Mod");
+			e.printStackTrace(System.err);
+		}
+			NotEnoughCats.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("playerhunter")) {
+		
+		System.out.println("Player Hunter Mod Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded Player Hunter Mod");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load Player Hunter Mod");
+			e.printStackTrace(System.err);
+		}
+			PlayerHunter.registerTrophies();
+		}
+	
+	if (Loader.isModLoaded("rockman_dash_craft")) {
+		
+		System.out.println("MegamanLegendsCraft Mod Loaded");
+		try {
+			LogHelper.log(Level.INFO, "Loaded MegamanLegendsCraft Mod");
+		}
+		catch (Exception e) {
+			LogHelper.log(Level.WARN, "Could not load MegamanLegendsCraft Mod");
+			e.printStackTrace(System.err);
+		}
+			MegamanLegendsCraft.registerTrophies();
 		}
 }
 
