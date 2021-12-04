@@ -11,7 +11,8 @@ public class EpicProportionsMod_Halloween {
 		TrophyRegistry.getInstance().addTrophies(new TrophyAoA[] { new TrophyAoA("minecraft", "EntitySpookyPat")});
 		TrophyRegistry.getInstance().addTrophies(new TrophyAoA[] { new TrophyAoA("minecraft", "EntitySpookyCaptianCookie")});
 		TrophyRegistry.getInstance().addTrophies(new TrophyAoA[] { new TrophyAoA("minecraft", "EntityGhost")});
-		
+		TrophyRegistry.getInstance().addTrophies(new TrophyAoA[] { new TrophyAoA("minecraft", "EntityScareCrow")});
+
 	}
 
 }

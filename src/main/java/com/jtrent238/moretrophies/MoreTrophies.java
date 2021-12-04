@@ -1,99 +1,11 @@
 package com.jtrent238.moretrophies;
 
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
-
-import org.apache.logging.log4j.Level;
-
 import com.jim.obscore.OCClientConfig;
-import com.jim.obscore.blocks.BlockInitialisation;
 import com.jim.obscore.containers.AbstractLanguageDetails;
-import com.jim.obscore.containers.BlockDetails;
 import com.jim.obscore.lib.ObsLog;
-import com.jim.obstrophiesaoa.trophy.TrophyAoA;
-import com.jim.obstrophiesaoa.trophy.TrophyRegistry;
 import com.jtrent238.moretrophies.common.CommonProxy;
-import com.jtrent238.moretrophies.trophyloaders.AdInfernos;
-import com.jtrent238.moretrophies.trophyloaders.AnimalBikes;
-import com.jtrent238.moretrophies.trophyloaders.AquaCreeper;
-import com.jtrent238.moretrophies.trophyloaders.AshtonsWatermelonMod;
-import com.jtrent238.moretrophies.trophyloaders.BabyMobs;
-import com.jtrent238.moretrophies.trophyloaders.BackportMod;
-import com.jtrent238.moretrophies.trophyloaders.CandyCraft;
-import com.jtrent238.moretrophies.trophyloaders.CrazyOres;
-import com.jtrent238.moretrophies.trophyloaders.CryptoCraft;
-import com.jtrent238.moretrophies.trophyloaders.Digimobs;
-import com.jtrent238.moretrophies.trophyloaders.DinoDimension;
-import com.jtrent238.moretrophies.trophyloaders.DungeonMobs;
-import com.jtrent238.moretrophies.trophyloaders.ElementalCreepers;
-import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod;
-import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod_Christmas;
-import com.jtrent238.moretrophies.trophyloaders.EpicProportionsMod_Halloween;
-import com.jtrent238.moretrophies.trophyloaders.ExoticPlayers;
-import com.jtrent238.moretrophies.trophyloaders.ExtraGolems;
-import com.jtrent238.moretrophies.trophyloaders.FNaFUniverse;
-import com.jtrent238.moretrophies.trophyloaders.FandomCraft;
-import com.jtrent238.moretrophies.trophyloaders.FantasyMod;
-import com.jtrent238.moretrophies.trophyloaders.FatherToastSpecialMobs;
-import com.jtrent238.moretrophies.trophyloaders.FossilsandArcheologyRevival;
-import com.jtrent238.moretrophies.trophyloaders.FrozenArctic;
-import com.jtrent238.moretrophies.trophyloaders.HardcoreEnderExpansion;
-import com.jtrent238.moretrophies.trophyloaders.InventoryPets;
-import com.jtrent238.moretrophies.trophyloaders.JTYouTubers;
-import com.jtrent238.moretrophies.trophyloaders.JurassiCraft;
-import com.jtrent238.moretrophies.trophyloaders.JustaFewFish;
-import com.jtrent238.moretrophies.trophyloaders.LaserCreepers;
-import com.jtrent238.moretrophies.trophyloaders.LittleBigCraft;
-import com.jtrent238.moretrophies.trophyloaders.LostWorld;
-import com.jtrent238.moretrophies.trophyloaders.LotsofMobs;
-import com.jtrent238.moretrophies.trophyloaders.MaleficentWorld;
-import com.jtrent238.moretrophies.trophyloaders.MegamanLegendsCraft;
-import com.jtrent238.moretrophies.trophyloaders.Minecraft;
-import com.jtrent238.moretrophies.trophyloaders.MoZombies;
-import com.jtrent238.moretrophies.trophyloaders.MoreAnimalsMod;
-import com.jtrent238.moretrophies.trophyloaders.MoreShearables;
-import com.jtrent238.moretrophies.trophyloaders.MrGorrila;
-import com.jtrent238.moretrophies.trophyloaders.MrWhalesAminalsMod;
-import com.jtrent238.moretrophies.trophyloaders.MyPetSushi;
-import com.jtrent238.moretrophies.trophyloaders.MysticalMobs;
-import com.jtrent238.moretrophies.trophyloaders.NeighborCraft;
-import com.jtrent238.moretrophies.trophyloaders.NightmareCreatures;
-import com.jtrent238.moretrophies.trophyloaders.NotEnoughCats;
-import com.jtrent238.moretrophies.trophyloaders.OreSpiders;
-import com.jtrent238.moretrophies.trophyloaders.Orespawn;
-import com.jtrent238.moretrophies.trophyloaders.ParziStarWars;
-import com.jtrent238.moretrophies.trophyloaders.Pixelmon;
-import com.jtrent238.moretrophies.trophyloaders.PlayerHunter;
-import com.jtrent238.moretrophies.trophyloaders.Potatians;
-import com.jtrent238.moretrophies.trophyloaders.PrimitiveMobs;
-import com.jtrent238.moretrophies.trophyloaders.ProjectFruit;
-import com.jtrent238.moretrophies.trophyloaders.RandNMixMod;
-import com.jtrent238.moretrophies.trophyloaders.RandomMobsMod;
-import com.jtrent238.moretrophies.trophyloaders.ReptileMod;
-import com.jtrent238.moretrophies.trophyloaders.SoggyEaster;
-import com.jtrent238.moretrophies.trophyloaders.SpiderQueen;
-import com.jtrent238.moretrophies.trophyloaders.TConstruct;
-import com.jtrent238.moretrophies.trophyloaders.TF2stuff;
-import com.jtrent238.moretrophies.trophyloaders.TakumiCraft;
-import com.jtrent238.moretrophies.trophyloaders.TattleTailCraft;
-import com.jtrent238.moretrophies.trophyloaders.Teletubbies;
-import com.jtrent238.moretrophies.trophyloaders.TheUltimateUnicornMod;
-import com.jtrent238.moretrophies.trophyloaders.TheValeOfShadows;
-import com.jtrent238.moretrophies.trophyloaders.VaraziusFNAF;
-import com.jtrent238.moretrophies.trophyloaders.WeepingAngels;
-import com.jtrent238.moretrophies.trophyloaders.WildMobsMod;
-import com.jtrent238.moretrophies.trophyloaders.Witchery;
-import com.jtrent238.moretrophies.trophyloaders.WorldofWarcraft;
-import com.jtrent238.moretrophies.trophyloaders.Yogmod;
-import com.jtrent238.moretrophies.trophyloaders.ZeldaSwordSkills;
-import com.jtrent238.moretrophies.trophyloaders.ZoocraftDiscoveries;
-
+import com.jtrent238.moretrophies.trophyloaders.*;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -104,20 +16,14 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.eventhandler.EventPriority;
-import cpw.mods.fml.common.registry.LanguageRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.command.ICommandManager;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagString;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.common.ChestGenHooks;
+import org.apache.logging.log4j.Level;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Mod(modid=MoreTrophies.MODID, name=MoreTrophies.MODNAME, version=(MoreTrophies.MODVERSION), dependencies="required-after:obstrophiesaoa")
 //@MeddleMod(id=Main.MODID, name=Main.MODNAME, version=(Main.MODVERSION), author=Main.MODAUTHOR)
@@ -133,7 +39,7 @@ public class MoreTrophies
 
 	@Instance(MODID)
     public static MoreTrophies instance;
-	public static final String MODVERSION = "1.0.2.6";
+	public static final String MODVERSION = "indev-1.0.2.6";
 	public static final String MODNAME = "jtrent238's More Trophies Mod";
 	public static final String MODAUTHOR = "jtrent238";
 	public static final String MC = "1.7.10";
@@ -1146,6 +1052,58 @@ public void init(FMLInitializationEvent event) throws IOException
 		}
 			MegamanLegendsCraft.registerTrophies();
 		}
+
+    if (Loader.isModLoaded("ogpig")) {
+
+        System.out.println("OGPig Mod Loaded");
+        try {
+            LogHelper.log(Level.INFO, "Loaded OGPig Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load OGPig Mod");
+            e.printStackTrace(System.err);
+        }
+        OGPig.registerTrophies();
+    }
+
+    if (Loader.isModLoaded("MMOs")) {
+
+        System.out.println("The PopularMMOs Mod! Loaded");
+        try {
+            LogHelper.log(Level.INFO, "Loaded The PopularMMOs Mod!");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load The PopularMMOs Mod!");
+            e.printStackTrace(System.err);
+        }
+        MMOs.registerTrophies();
+    }
+
+    if (Loader.isModLoaded("pacman")) {
+
+        System.out.println("The Killer PacMan Mod Loaded");
+        try {
+            LogHelper.log(Level.INFO, "Loaded The Killer PacMan Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load The Killer PacMan Mod");
+            e.printStackTrace(System.err);
+        }
+        PacMan.registerTrophies();
+    }
+
+    if (Loader.isModLoaded("luckyblock")) {
+
+        System.out.println("jtrent238's Lucky Blocks Mod Loaded");
+        try {
+            LogHelper.log(Level.INFO, "Loaded jtrent238's Lucky Blocks Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load jtrent238's Lucky Blocks Mod");
+            e.printStackTrace(System.err);
+        }
+        JTLuckyBlocks.registerTrophies();
+    }
 }
 
 @Mod.EventHandler
