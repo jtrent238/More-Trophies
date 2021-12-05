@@ -12,7 +12,7 @@ import net.minecraft.item.Item.ToolMaterial;
 
 public class ItemLoader {
 	
-	private static String[] jtrent238ModIDS = { "epicproportionsmod", "epicproportionsmod_halloween", "epicproportionsmod_christmas", "jtrent238youtubers"};
+	private static String[] jtrent238ModIDS = { "epicproportionsmod", "epicproportionsmod_halloween", "epicproportionsmod_christmas", "jtrent238youtubers", "luckyblock", "ogpig"};
 	private static String[] GolemModIds= { "golems", "golems_addon_tconstruct"};
 	
 	public static ItemSpecialSword jtrent238_Sword;
@@ -34,6 +34,8 @@ public class ItemLoader {
 			jtrent238TooltipParts.add("PopularMMOS Epic Proportions Mod - Halloween Addon");
 			jtrent238TooltipParts.add("PopularMMOS Epic Proportions Mod - Christmas Addon");
 			jtrent238TooltipParts.add("jtrent238's YouTubers");
+			jtrent238TooltipParts.add("jtrent238's Lucky Block Mod");
+			jtrent238TooltipParts.add("OGPig Mod");
 		jtrent238_Sword.forModIDsTooltipOverride(jtrent238TooltipParts);
 		jtrent238_Sword.setDropChances(0.1F, 0.2F, 0.3F, 0.4F);
 		

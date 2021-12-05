@@ -1104,6 +1104,99 @@ public void init(FMLInitializationEvent event) throws IOException
         }
         JTLuckyBlocks.registerTrophies();
     }
+
+    if (Loader.isModLoaded("diversity")) {
+
+        System.out.println("Diversity Mod Loaded");
+        try {
+            LogHelper.log(Level.INFO, "Loaded Diversity Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Diversity Mod");
+            e.printStackTrace(System.err);
+        }
+        Diversity.registerTrophies();
+    }
+
+    if (Loader.isModLoaded("godzillamod")) {
+
+        System.out.println("Godzilla Mod Loaded");
+        try {
+            LogHelper.log(Level.INFO, "Loaded Godzilla Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Godzilla Mod");
+            e.printStackTrace(System.err);
+        }
+        Godzilla.registerTrophies();
+    }
+
+    if (Loader.isModLoaded("morbid")) {
+
+        System.out.println("The Morbid Reborn Mod Loaded");
+        try {
+            LogHelper.log(Level.INFO, "Loaded The Morbid Reborn Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load The Morbid Reborn Mod");
+            e.printStackTrace(System.err);
+        }
+        MorbidReborn.registerTrophies();
+    }
+
+    if (Loader.isModLoaded("RioV")) {
+
+        System.out.println("The Mists of RioV Mod Loaded");
+        try {
+            LogHelper.log(Level.INFO, "Loaded The Mists of RioV Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load The Mists of RioV Mod");
+            e.printStackTrace(System.err);
+        }
+        TheMistsofRioV.registerTrophies();
+    }
+
+    if (Loader.isModLoaded("MLPMod")) {
+
+        System.out.println("MLP Mythical Creatures Mod Loaded");
+        try {
+            LogHelper.log(Level.INFO, "Loaded MLP Mythical Creatures Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load MLP Mythical Creatures Mod");
+            e.printStackTrace(System.err);
+        }
+        MLPMythicalC.registerTrophies();
+    }
+
+    if (Loader.isModLoaded("netherlicious")) {
+
+        System.out.println("Netherlicious Mod Loaded");
+        try {
+            LogHelper.log(Level.INFO, "Loaded Netherlicious Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Netherlicious Mod");
+            e.printStackTrace(System.err);
+        }
+        Netherlicious.registerTrophies();
+    }
+
+    if (Loader.isModLoaded("Rediscovered")) {
+
+        System.out.println("Rediscovered Mod Loaded");
+        try {
+            LogHelper.log(Level.INFO, "Loaded Rediscovered Mod");
+        }
+        catch (Exception e) {
+            LogHelper.log(Level.WARN, "Could not load Rediscovered Mod");
+            e.printStackTrace(System.err);
+        }
+        Rediscovered.registerTrophies();
+    }
+
+    //TrophyAPI.registerTrophy("minecraft","EnderDragon");
 }
 
 @Mod.EventHandler
